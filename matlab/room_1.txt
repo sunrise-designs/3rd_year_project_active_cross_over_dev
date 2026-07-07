@@ -1,0 +1,28 @@
+surface floor
+//X,y,Z
+0 1 2 3
+2 3 4 5
+6 7 8 9
+//Reflect
+0.1
+//Absorb
+0.3
+//Diffuse
+0.01
+//Colour
+'r'
+
+
+surface left_wall
+//X,y,Z
+1 5 0 3
+0 5 0 5
+6 7 5 9
+//Reflect
+0.2
+//Absorb
+0.39
+//Diffuse
+0.4
+//Colour
+'b'
