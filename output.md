@@ -22,71 +22,7 @@ filter was shown to successfully flatten the acoustic response at high
 frequencies, which should result in more sonically accurate reproduction
 of sound.
 
-# Table of Contents
 
-[1 Abstract [1](#abstract)](#abstract)
-
-[2 Introduction [2](#introduction)](#introduction)
-
-[3 Frequency characterisation system
-[3](#frequency-characterisation-system)](#frequency-characterisation-system)
-
-[3.1 Signals used [3](#signals-used)](#signals-used)
-
-[3.2 Time domain response
-[5](#time-domain-response)](#time-domain-response)
-
-[3.3 Measurement workflow
-[6](#measurement-workflow)](#measurement-workflow)
-
-[4 Experimental results
-[7](#experimental-results)](#experimental-results)
-
-[4.1 Semi-octave smoothing
-[7](#semi-octave-smoothing)](#semi-octave-smoothing)
-
-[4.2 Sound card buffering
-[8](#sound-card-buffering)](#sound-card-buffering)
-
-[4.3 Amplitude [8](#amplitude)](#amplitude)
-
-[4.4 Phase [10](#phase)](#phase)
-
-[5 Digital cross-over design
-[12](#digital-cross-over-design)](#digital-cross-over-design)
-
-[5.1 Filter design [12](#filter-design)](#filter-design)
-
-[5.2 Design of a linear phase filter
-[15](#design-of-a-linear-phase-filter)](#design-of-a-linear-phase-filter)
-
-[5.3 Cross-over measurement results
-[15](#cross-over-measurement-results)](#cross-over-measurement-results)
-
-[5.4 Microphone connections and compensation
-[16](#microphone-connections-and-compensation)](#microphone-connections-and-compensation)
-
-[5.5 Acoustic measurements
-[17](#acoustic-measurements)](#acoustic-measurements)
-
-[6 Frequency response flattening
-[19](#frequency-response-flattening)](#frequency-response-flattening)
-
-[6.1 FIR filter design using Matlab
-[19](#fir-filter-design-using-matlab)](#fir-filter-design-using-matlab)
-
-[6.2 Extending the work [20](#extending-the-work)](#extending-the-work)
-
-[7 Conclusion [20](#conclusion)](#conclusion)
-
-[8 Appendix [21](#appendix)](#appendix)
-
-[8.1 Room impulse response model
-[21](#room-impulse-response-model)](#room-impulse-response-model)
-
-[8.2 Room equalisation [21](#room-equalisation)](#room-equalisation)
-
-[9 Works Cited [22](#_Toc288776101)](#_Toc288776101)
 
 # Introduction
 
@@ -1182,8 +1118,6 @@ place.
 
 # Works Cited
 
-x
-
 | \[1\] | Angelo Farina, "Simultaneous measurement of impulse response and distortion with a swept-sine technique," Università di Parma, 2000. |
 |---:|----|
 | \[2\] | Angelo Farina. http://www.aurora-plugins.com/. |
@@ -1193,4 +1127,69 @@ x
 | \[6\] | M. Lankarany and M.H. Savoji, "Deconvolution of Non-Minimum Phase FIR Systems using Adaptive Filtering," Shahid Beheshti University, Tehran,. |
 | \[7\] | Madeline Carson et al, "SURROUND SOUND IMPULSE RESPONSE, Measurement with the Exponential Sine Sweep, Application in Convolution Reverb," UNIVERSITY OF VICTORIA, 2009. |
 
-x
+# Table of Contents
+
+[1 Abstract [1](#abstract)](#abstract)
+
+[2 Introduction [2](#introduction)](#introduction)
+
+[3 Frequency characterisation system
+[3](#frequency-characterisation-system)](#frequency-characterisation-system)
+
+[3.1 Signals used [3](#signals-used)](#signals-used)
+
+[3.2 Time domain response
+[5](#time-domain-response)](#time-domain-response)
+
+[3.3 Measurement workflow
+[6](#measurement-workflow)](#measurement-workflow)
+
+[4 Experimental results
+[7](#experimental-results)](#experimental-results)
+
+[4.1 Semi-octave smoothing
+[7](#semi-octave-smoothing)](#semi-octave-smoothing)
+
+[4.2 Sound card buffering
+[8](#sound-card-buffering)](#sound-card-buffering)
+
+[4.3 Amplitude [8](#amplitude)](#amplitude)
+
+[4.4 Phase [10](#phase)](#phase)
+
+[5 Digital cross-over design
+[12](#digital-cross-over-design)](#digital-cross-over-design)
+
+[5.1 Filter design [12](#filter-design)](#filter-design)
+
+[5.2 Design of a linear phase filter
+[15](#design-of-a-linear-phase-filter)](#design-of-a-linear-phase-filter)
+
+[5.3 Cross-over measurement results
+[15](#cross-over-measurement-results)](#cross-over-measurement-results)
+
+[5.4 Microphone connections and compensation
+[16](#microphone-connections-and-compensation)](#microphone-connections-and-compensation)
+
+[5.5 Acoustic measurements
+[17](#acoustic-measurements)](#acoustic-measurements)
+
+[6 Frequency response flattening
+[19](#frequency-response-flattening)](#frequency-response-flattening)
+
+[6.1 FIR filter design using Matlab
+[19](#fir-filter-design-using-matlab)](#fir-filter-design-using-matlab)
+
+[6.2 Extending the work [20](#extending-the-work)](#extending-the-work)
+
+[7 Conclusion [20](#conclusion)](#conclusion)
+
+[8 Appendix [21](#appendix)](#appendix)
+
+[8.1 Room impulse response model
+[21](#room-impulse-response-model)](#room-impulse-response-model)
+
+[8.2 Room equalisation [21](#room-equalisation)](#room-equalisation)
+
+[9 Works Cited [22](#_Toc288776101)](#_Toc288776101)
+
