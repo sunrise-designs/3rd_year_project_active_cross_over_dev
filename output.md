@@ -229,13 +229,11 @@ measurement. I have not used this property of ESS in my work, however if
 I wish to calculate harmonic distortion at a later stage, I do not need
 to take the measurements again.
 
-The mathematical expression for ESS \[[1](#Angelo_original)\] is$`\`$
+The mathematical expression for ESS \[[1](#Angelo_original)\] is:
 
-|                                                               
- ``` math                                                       
- x(t) = \sin\left( K\left( e^{\frac{t}{L}} - 1 \right) \right)  
- ```                                                            | \(1\) |
-|---------------------------------------------------------------|-------|
+``` math
+x(t) = \sin\left( K\left( e^{\frac{t}{L}} - 1 \right) \right) \qquad (1)
+```
 
 Therefore we can express angular frequency *w* as a function of t
 
@@ -247,7 +245,7 @@ We can calculate parameters K and L based on the desired properties of
 swept signal: T=duration (seconds), w<sub>1</sub>=2πf<sub>1</sub>,
 w<sub>2</sub>=2πf<sub>2.</sub> Then,
 
-K $`= \frac{T{\bullet w}_{1}}{ln\left( \frac{w_{2}}{w_{1}} \right)}`$
+K $`= \frac{T \bullet w_{1}}{ln\left( \frac{w_{2}}{w_{1}} \right)}`$
 and $`L = \frac{T}{ln\left( \frac{w_{2}}{w_{1}} \right)}`$
 
 The final expression for instantaneous frequency as a function of time:
@@ -284,7 +282,7 @@ frequency ripple near the start and end frequencies when calculating
 amplitude response. At first, I simply convolved *x(t)* and *inv(t)*, to
 see how accurately inverse signal convolved with *x(t)* reproduced delta
 function (flat frequency spectrum). The frequency response is obtained
-as$`\ H(w\mathcal{) = F}\left\{ x(t) \right\}\mathcal{\times F}\left\{ inv(t) \right\}`$,
+as $`H(w) = \mathcal{F}\left\{ x(t) \right\} \times \mathcal{F}\left\{ inv(t) \right\}`$,
 where $`\mathcal{F}`$ is Fourier (FFT) transform.
 
 Using 0.1 second windows, there was about 0.5dB ripple near the lower
@@ -293,7 +291,7 @@ to 11 Hz, which reduced the ripple to about 0.05dB, as shown in [Figure
 3‑3](#_Ref288415153).
 
 <figure>
-<img src="assets/media/image8.emf"
+<img src="assets/media/image8.png"
 style="width:5.88194in;height:1.9375in" />
 <figcaption><p>- inverse signal amplitude response</p></figcaption>
 </figure>
@@ -313,7 +311,7 @@ $`\mathcal{F}`${*inv(t)}≠INV(w).* The recorded signal at audio card
 input is referred to as *y(t).*
 
 <figure>
-<img src="assets/media/image9.emf"
+<img src="assets/media/image9.png"
 style="width:5.98771in;height:1.95833in" />
 <figcaption><p>– improved inverse signal amplitude
 response</p></figcaption>
@@ -338,11 +336,11 @@ harmonic responses preceding it.
 <tr>
 <th><p><img src="assets/media/image10.png"
 style="width:0.89097in;height:1.08333in" /><img
-src="assets/media/image11.emf"
+src="assets/media/image11.png"
 style="width:3.07246in;height:2.63486in" /></p>
 <p>- time domain impulse response with harmonics – inv(t)<span
 class="math inline"><strong>*</strong></span>y(t)</p></th>
-<th><p><img src="assets/media/image12.emf"
+<th><p><img src="assets/media/image12.png"
 style="width:3.15716in;height:2.63768in" /></p>
 <p>- time domain - <span
 class="math inline">ℱ<sup><strong>−</strong><strong>1</strong></sup>{<em>I</em><em>N</em><em>V</em>(<em>w</em>)  × <em>Y</em>(<em>w</em>)}</span></p></th>
@@ -478,15 +476,15 @@ normalising to 0 dB once logarithmic values had been obtained.
 Displaying frequency response plots with original number of points (1.2
 million) is unnecessarily slow. I implemented a way to smooth the data
 based on semi-octave intervals. One octave is doubling of the
-frequency:$`\ {f_{1} = f}_{0} \times 2 \approx f_{0} \times 10^{0.3}`$.
+frequency: $`f_{1} = f_{0} \times 2 \approx f_{0} \times 10^{0.3}`$.
 One octave is too large of an increment to display meaningful data. 1/24
 or 1/48th of an octave (multiples of 3) are typically used. For example,
 increments of 1/48th octave
-are$`{\ f_{0} \times 10}^{\frac{0.3}{48} \times N}`$, where N is number
+are $`f_{0} \times 10^{\frac{0.3}{48} \times N}`$, where N is number
 of frequency increments. I used 1/96th octave smoothing. I calculated
 the number of frequency points as shown:
 
-$`22000 = {22 \times 10}^{\frac{0.3}{96} \times N}`$, N=?
+$`22000 = 22 \times 10^{\frac{0.3}{96} \times N}`$, N=?
 
 $`10^{\frac{0.3}{96} \times N} = \frac{22000}{22} = 1000`$, taking log
 of both sides
@@ -494,7 +492,7 @@ of both sides
 $`N = \frac{96}{0.3}log(1000)`$, N=960
 
 Then the vector FREQ_SEMI_OCT is calculated
-as$`{\ {FREQ\_ SEMI\_ OCT\ (N) = f}_{0} \times 10}^{\frac{0.3}{96} \times N - 1}`$
+as $`FREQ\_SEMI\_OCT(N) = f_{0} \times 10^{\frac{0.3}{96} \times N - 1}`$
 for N=1…960
 
 To obtain smoothed response, I summed all the values falling between two
@@ -546,7 +544,7 @@ In further experiments, I subtracted the buffer response to obtain true
 circuit response.
 
 <figure>
-<img src="assets/media/image15.emf"
+<img src="assets/media/image15.png"
 style="width:5.87813in;height:2.70455in" />
 <figcaption><p>- sound card response compensation</p></figcaption>
 </figure>
@@ -575,21 +573,21 @@ style="width:1.84893in;height:0.87681in" /></th>
 <tbody>
 <tr>
 <td style="text-align: center;"><span class="math display">$$H(s) =
-\frac{{sC}_{1}R_{2} + 1}{{sC}_{1}\left( {R_{1} + R}_{2} \right) +
+\frac{sC_{1}R_{2} + 1}{sC_{1}\left( R_{1} + R_{2} \right) +
 1}$$</span></td>
 <td style="text-align: center;"><span class="math display">$$H(s) =
-\frac{{sC}_{1}{R_{1}R}_{2} + R_{2}}{{sC}_{1}{R_{1}R}_{2} + (R_{1} +
+\frac{sC_{1}R_{1}R_{2} + R_{2}}{sC_{1}R_{1}R_{2} + (R_{1} +
 R_{2})}$$</span></td>
 <td style="text-align: center;"><span class="math display">$$H(s) =
 \frac{1}{sC_{1}R_{1} + 1}$$</span></td>
 </tr>
 <tr>
-<td style="text-align: center;"><p>Num=[C1*R2 1]</p>
-<p>Den=[C1*(R1+R2) 1]</p></td>
-<td style="text-align: center;"><p>Num=[C1*R1*R2 R2]</p>
-<p>Den=[C1*R1*R2 R1+R2]</p></td>
-<td style="text-align: center;"><p>Num=[1]</p>
-<p>Den=[C1*R1 1]</p></td>
+<td style="text-align: center;"><p><code>Num=[C1*R2 1]</code></p>
+<p><code>Den=[C1*(R1+R2) 1]</code></p></td>
+<td style="text-align: center;"><p><code>Num=[C1*R1*R2 R2]</code></p>
+<p><code>Den=[C1*R1*R2 R1+R2]</code></p></td>
+<td style="text-align: center;"><p><code>Num=[1]</code></p>
+<p><code>Den=[C1*R1 1]</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -598,7 +596,7 @@ R_{2})}$$</span></td>
 responses for a low-pass shelf filter. We can see they agree perfectly.
 
 <figure>
-<img src="assets/media/image19.emf"
+<img src="assets/media/image19.png"
 style="width:5.46631in;height:2.99242in" />
 <figcaption><p>– low pass shelf filter amplitude
 response</p></figcaption>
@@ -609,7 +607,7 @@ and low-pass filters with different time constants. Again, measurements
 closely agree with calculated data.
 
 <figure>
-<img src="assets/media/image20.emf"
+<img src="assets/media/image20.png"
 style="width:6.14772in;height:3.35606in" />
 <figcaption><p>- amplitude responses of sample circuits</p></figcaption>
 </figure>
@@ -651,7 +649,7 @@ I got somewhat more encouraging results using this method, as shown in
 [Figure 4‑6](#_Ref288585107).
 
 <figure>
-<img src="assets/media/image22.emf"
+<img src="assets/media/image22.png"
 style="width:5.35417in;height:3.00694in" />
 <figcaption><p>- phase response of a shelf filter obtained with
 Quadrature Phase detector</p></figcaption>
@@ -681,7 +679,7 @@ In a recording system with deterministic delay between output and the
 input calibration can be avoided.
 
 <figure>
-<img src="assets/media/image23.emf"
+<img src="assets/media/image23.png"
 style="width:5.44495in;height:2.61806in" />
 <figcaption><p>- phase response of audio card, obtained using INV(w)
 inverse filter</p></figcaption>
@@ -698,7 +696,7 @@ elaborate phase calibration algorithm, or using recording system with
 deterministic recording delay.
 
 <figure>
-<img src="assets/media/image24.emf"
+<img src="assets/media/image24.png"
 style="width:6.0119in;height:3.25in" />
 <figcaption><p>– phase response of sample circuits obtained using INV(w)
 inverse filter</p></figcaption>
@@ -728,10 +726,10 @@ hand. For third order high-pass section I used Maple software to help me
 simplify the equation and collect the s terms.
 
 The resultant equations are:
-$`H_{LP}(s) = \frac{s\left( R_{w}C_{1}R_{1} \right) + R_{w}}{s^{2}\left( R_{w}L_{1}C_{1} + C_{1}R_{1}L_{1} \right) + s\left( R_{w}C_{1}R_{1} + L_{1} + 0.3R_{w}C_{1}R_{1} + 0.3C_{1} \right) + {(R}_{w} + 0.3)}`$
+$`H_{LP}(s) = \frac{s\left( R_{w}C_{1}R_{1} \right) + R_{w}}{s^{2}\left( R_{w}L_{1}C_{1} + C_{1}R_{1}L_{1} \right) + s\left( R_{w}C_{1}R_{1} + L_{1} + 0.3R_{w}C_{1}R_{1} + 0.3C_{1} \right) + (R_{w} + 0.3)}`$
 for the woofer, where R<sub>w</sub> is resistance of the woofer coil.
 
-$`H_{HP}(s) = \frac{s^{3}\left( 4.3L_{2}C_{2}C_{3} \right) + s^{2}(3.87C_{2}C_{3})}{s^{3}\left( 6.5{L_{2}C}_{2}C_{3} \right) + s^{2}\left( {L_{2}C}_{3} + {L_{2}C}_{2} + 5.85C_{2}^{2} \right) + s(7.4C_{3} + 0.9C_{2})}`$
+$`H_{HP}(s) = \frac{s^{3}\left( 4.3L_{2}C_{2}C_{3} \right) + s^{2}(3.87C_{2}C_{3})}{s^{3}\left( 6.5L_{2}C_{2}C_{3} \right) + s^{2}\left( L_{2}C_{3} + L_{2}C_{2} + 5.85C_{2}^{2} \right) + s(7.4C_{3} + 0.9C_{2})}`$
 for the tweeter.
 
 Because this process is cumbersome and required specialist maths
@@ -752,10 +750,10 @@ to use the manual method.
 </colgroup>
 <thead>
 <tr>
-<th><p><img src="assets/media/image26.emf"
+<th><p><img src="assets/media/image26.png"
 style="width:3.25362in;height:2.64493in" /></p>
 <p>- impulse response of the low-pass digital filter</p></th>
-<th><p><img src="assets/media/image27.emf"
+<th><p><img src="assets/media/image27.png"
 style="width:3.06643in;height:2.5942in" /></p>
 <p>- impulse response of high-pass digital filter</p></th>
 </tr>
@@ -866,9 +864,10 @@ parameters of the filters are:
 To achieve required roll-off I empirically decided to set the order of
 digital low pass and high pass filters to 20 and 40, respectively:
 
+``` matlab
 lp=fir1(20,1200/48E3);
-
 hp=fir1(40,4500/48E3,'high');
+```
 
 The acoustic performance of the speaker driven by this FIR cross-over
 filter compared to passive cross-over is discusses in section
@@ -897,7 +896,7 @@ have to worry about such variables that we cannot always control.
 
 <img src="assets/media/image31.png"
 style="width:0.89142in;height:0.70139in"
-alt="E:\Compaq_Owner\My Documents\3rd year project\Images\active passive xover graphs legend.png" /><img src="assets/media/image32.emf"
+alt="E:\Compaq_Owner\My Documents\3rd year project\Images\active passive xover graphs legend.png" /><img src="assets/media/image32.png"
 style="width:6.49583in;height:3.56734in" />
 
 – active vs. passive cross-over electric characteristics
@@ -991,7 +990,7 @@ style="width:2.43451in;height:1.86806in" />
 </figure>
 
 <figure>
-<img src="assets/media/image36.emf"
+<img src="assets/media/image36.png"
 style="width:6.0784in;height:3.26389in" />
 <figcaption><p>- individual driver responses in active
 mode</p></figcaption>
@@ -1011,7 +1010,7 @@ however this dip can be easily corrected as shown in section
 [6.1](#fir-filter-design-using-matlab).
 
 <img src="assets/media/image37.png"
-style="width:1.05516in;height:0.5in" /><img src="assets/media/image38.emf"
+style="width:1.05516in;height:0.5in" /><img src="assets/media/image38.png"
 style="width:6.49583in;height:3.28747in" />
 
 \- loudspeaker response with passive vs. active IIR cross-overs
@@ -1020,7 +1019,7 @@ style="width:6.49583in;height:3.28747in" />
 passive and active FIR linear phase cross-overs.
 
 <figure>
-<img src="assets/media/image39.emf"
+<img src="assets/media/image39.png"
 style="width:6.65217in;height:3.15529in" />
 <figcaption><p>– loudspeaker response with passive vs. linear phase
 response cross-overs</p></figcaption>
@@ -1089,7 +1088,7 @@ so instead of compensating specific features, only general attenuation
 is introduced.
 
 <figure>
-<img src="assets/media/image40.emf"
+<img src="assets/media/image40.png"
 style="width:6.49262in;height:3.59722in" />
 <figcaption><p>- FIR inverse filter and resulting frequency
 response</p></figcaption>
